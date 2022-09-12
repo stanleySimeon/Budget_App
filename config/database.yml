@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV.fetch("DATABASE_USERNAME") {'postgres'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {'Martial@5009'} %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: my_spents_development
+  username: <%= ENV.fetch("DATABASE_USERNAME") {'postgres'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {'Martial@5009'} %>
+
+test:
+  <<: *default
+  database: my_spents_test
+  username: <%= ENV.fetch("DATABASE_USERNAME") {'postgres'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {'Martial@5009'} %>
+
+production:
+  <<: *default
+  database: my_spents_production
+  username: my_spents
+  password: <%= ENV["MY_SPENTS_DATABASE_PASSWORD"] %>
