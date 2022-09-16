@@ -18,7 +18,7 @@
       <div class="card-body flex w-auto justify-between items-center p-2 mb-4 rounded-sm border shadow-md">
         <div class="flex justify-start w-auto gap-2">
           <% if category.image.attached? %>
-            <%= image_tag category.image, alt: 'category icon', class: "h-16 w-16 rounded-sm" %>
+            <%= image_tag category.image, skip_pipeline: true, alt: 'category icon', class: "h-16 w-16 rounded-sm" %>
           <% end %>
           <span class="flex flex-col justify-between">
             <%= link_to category.name, category_path(category), :class => "text-mySpend-Text text-lg font-bold" %>
