@@ -1,4 +1,43 @@
-<div>
-  <h1 class="font-bold text-4xl">Categories#show</h1>
-  <p>Find me in app/views/categories/show.html.erb</p>
+<header class=" bg-mySpend px-2 h-16 sm:px-4 py-2 sm:py-0 sticky w-full flex justify-center z-20 top-0 left-0">
+  <nav class="container flex flex-wrap sm:flex-nowrap justify-between p-0 items-center mx-auto">
+    <span><%= link_to image_tag('arrow_left.svg', class:"h-6 w-6 p-0 m-auto"), categories_path %></span>
+    <span class="text-center text-white text-md">PAYMENTS</span>
+    <span>
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'text-white text-center'  %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'text-white text-center' %>
+        <%= f.submit "Sign In", class: "text-white text center" %>
+      <% end %>
+    </span>
+  </nav>
+</header>
+<div class="container">
+  <% if @payments.exists? %>
+    <div class="container p-0 w-full h-auto">
+      <% @payments.each do |payment| %>
+        <div class="container p-2 h-auto mt-4 flex justify-between items-center bg-light border rounded-md shadow-md">
+          <div class="flex flex-col">
+            <span class="text-mySpend-Text fw-600 mb-2 text-lg">
+              <%= payment.name %>
+            </span>
+            <span class="text-mySpend-TextLight">
+              <%= payment.created_at.strftime("%d/%m/%Y") %> at <%= payment.created_at.strftime("%H:%M") %>
+            </span>
+          </div>
+          <span class="text-mySpend-TextLight text-lg">
+            $<%= payment.amount %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+      <span>
+        <h2 class="text-center text-mySpend-Text text-xl mt-48">No Payments Available Now! <br />Click the button bellow to add a new payment.</h2>
+        <%= image_tag('arrowDown.svg', :alt => "arrow down icon", class:"h-10 w-10 p-0 fw-bold mx-auto mt-4") %>
+      </span>
+    <% end %>
 </div>
+  <span class="w-full rounded-0 fixed bottom-0 z-20 text-center p-2 bg-mySpend-green">
+    <%= link_to "New Payment", new_category_payment_path(@category), class: "btn border rounded-0 border-white p-2 text-white text-md text-center" %>
+  </span>

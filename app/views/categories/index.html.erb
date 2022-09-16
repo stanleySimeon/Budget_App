@@ -1,4 +1,46 @@
-<div>
-  <h1 class="font-bold text-4xl">Categories#index</h1>
-  <p>Find me in app/views/categories/index.html.erb</p>
+<header class=" bg-mySpend px-2 h-16 sm:px-4 py-2 sm:py-0 sticky w-full flex justify-center z-20 top-0 left-0">
+  <nav class="container flex flex-wrap sm:flex-nowrap justify-between p-0 items-center mx-auto">
+    <span><%= image_tag('avatar', class:"h-10 w-10 p-0 m-auto") %></span>
+    <span class="text-center text-white text-md">CATEGORIES</span>
+    <span>
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'text-white text-center'  %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'text-white text-center' %>
+        <%= f.submit "Sign In", class: "text-white text center" %>
+      <% end %>
+    </span>
+  </nav>
+</header>
+<div class="container w-56 h-auto py-4 mb-16 md:w-6/12 relative">
+  <% if user_signed_in? %>
+    <% @categories.each do |category| %>
+      <div class="card-body flex w-auto justify-between items-center p-2 mb-4 rounded-sm border shadow-md">
+        <div class="flex justify-start w-auto gap-2">
+          <% if category.image.attached? %>
+            <%= image_tag category.image, alt: 'category icon', class: "h-16 w-16 rounded-sm" %>
+          <% end %>
+          <span class="flex flex-col justify-between">
+            <%= link_to category.name, category_path(category), :class => "text-mySpend-Text text-lg font-bold" %>
+            <span class="text-xs text-gray">
+              <%= category.created_at.strftime("%d/%m/%Y") %> at <%= category.created_at.strftime("%H:%M") %>
+            </span>
+          </span>
+        </div>
+        <div class="flex flex-col ">
+          <p class="price text-mySpend-Text">
+            $<%= category.payments.sum(:amount) %>
+          </p>
+          <% if can? :destroy, @category %>
+          <span><%= button_to "Delete", category_path(category), :method => 'delete', :class => "text-danger" %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
+<% if can? :create, @category %>
+<span class="w-full rounded-0 fixed bottom-0 z-20 text-center p-2 bg-mySpend-green">
+<%= link_to "New category", new_category_path, class: "btn border rounded-0 border-white p-2 text-white text-md text-center" %>
+</span>
+<% end %>

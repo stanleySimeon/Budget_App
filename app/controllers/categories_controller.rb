@@ -1,51 +1,47 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
+
   def index
-    @categories = current_user.categories
+    @categories = Category.includes(:user, :payments).order('created_at DESC')
   end
 
   def show
-    @category = Category.find(params[:id])
-    @payments = @category.payments.order('created_at DESC')
+    @payments = Payment.where(category_id: params[:id]).order('created_at DESC')
   end
 
   def new
     @category = Category.new
   end
 
+  def edit; end
+
   def create
     @category = Category.new(category_params)
-    @category.user = current_user
+    @category.user_id = current_user.id
     if @category.save
-      redirect_to @category, notice: 'Category was successfully created.'
+      flash[:notice] = 'Category was successfully created.'
+      redirect_to new_category_payment_url(@category)
     else
+      flash[:alert] = 'Category was not created.'
       render :new, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    @category = Category.find(params[:id])
-    if @category.update(category_params)
-      redirect_to @category, notice: 'Category was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to categories_url, notice: 'Category was successfully deleted.'
+    flash[:notice] = 'Category was successfully deleted.'
+    redirect_to categories_path
   end
 
   private
 
-  def category_params
-    params.require(:category).permit(:name, :icon, :user_id)
-    category_params[:user_id] = current_user.id
-    category_params
-  end
-
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def category_params
+    params.require(:category).permit(:name, :image)
   end
 end

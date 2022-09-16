@@ -1,0 +1,7 @@
+    <div class="card z-50 top-0 h-screen bg-mySpend-splash flex flex-col justify-center align-items-center">
+      <h1 class="text-mySpend font-medium text-5xl -mt-24 md:text-9xl text-center">mySpend</h1>
+      <div class="container w-full absolute bottom-12 md:relative md:mt-16 md:px-0 md:flex md:justify-center align-items-center md:gap-4">
+          <%= button_to "LOG IN", new_user_session_path, method: :get, :class => "bg-mySpend w-full md:w-auto py-2 md:px-6 rounded md:rounded-sm text-white" %>
+          <%= button_to "SIGN UP", new_user_registration_path, method: :get, :class => "btn bg-transparent w-full md:w-auto py-2 md:px-6 rounded md:rounded-sm md:border border-mySpend text-mySpend-Text md:text-mySpend-Text" %>
+      </div>
+    </div>

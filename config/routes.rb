@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :categories, only: [:index, :show, :new, :update, :destroy] do
+  resources :categories do
     resources :payments
   end
-  root 'home#index'
+  root 'splashes#index'
 end

@@ -1,13 +1,10 @@
 class Payment < ApplicationRecord
-  belongs_to :user, class_name: 'User'
-  belongs_to :category, class_name: 'Category'
+  belongs_to :user
+  has_and_belongs_to_many :categories, dependent: :destroy
 
-  validates :amount, presence: true
-  validates :date, presence: true
-  validates :category_id, presence: true
-  validates :user_id, presence: true
+  validates :name, :amount, presence: true
 
   def self.search(search)
-    where("name LIKE ?", "%#{search}%")
+    where('name LIKE ?', "%#{search}%")
   end
 end

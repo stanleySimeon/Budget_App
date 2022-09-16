@@ -1,4 +1,33 @@
-<div>
-  <h1 class="font-bold text-4xl">Payments#new</h1>
-  <p>Find me in app/views/payments/new.html.erb</p>
-</div>
+  <header class=" bg-mySpend px-2 h-16 sm:px-4 py-2 sm:py-0 sticky w-full flex justify-center z-20 top-0 left-0">
+    <nav class="container flex flex-wrap sm:flex-nowrap justify-between p-0 items-center mx-auto">
+      <span><%= link_to image_tag('arrow_left.svg', class:"h-6 w-6 p-0 m-auto"), new_user_registration_path %></span>
+      <span class="text-center text-white text-md">PAYMENTS</span>
+      <span>
+        <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'text-white text-center'  %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, :class => 'text-white text-center' %>
+          <%= f.submit "Sign In", class: "text-white text center" %>
+        <% end %>
+      </span>
+    </nav>
+  </header>
+<%= form_with model:  @payment, url: category_payments_path(@categories) do |f| %>
+  <div class="card-body error-message">
+    <% if @payment.errors.any? %>
+      <ul class="list-style-none p-0">
+        <% @payment.errors.full_messages.each do |message| %>
+          <li class="text-danger fw-md text-ms text-center">* <%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="card-body bg-white form shadow-md">
+    <%= f.text_field :name, placeholder: "Payment name", class: "field w-full py-2 px-1 mb-3 bg-transparent" %>
+    <%= f.text_field :amount, placeholder: "Amount", class: "field w-full py-2 px-1 mb-3 bg-transparent" %>
+    <%= f.collection_select :category_id, current_user.categories, :id, :name, prompt: true, class: "field w-full py-2 px-1 mb-3 bg-transparent" %>
+    <div class="button-form">
+      <%= f.submit :save, :class => "btn btn-success w-28 mt-4" %>
+    </div>
+  </div>
+<% end %>

@@ -4,6 +4,5 @@ class User < ApplicationRecord
 
   has_many :categories
   has_many :payments
-
-  validates :name, presence: true, uniqueness: true
+  has_one_attached :image, dependent: :destroy
 end

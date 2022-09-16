@@ -26,6 +26,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+        proxima: ['Proxima Nova Bold', ...defaultTheme.fontFamily.sans],
+        proximaLight: ['Proxima Nova Light', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         red: '#ff0000',
@@ -55,6 +57,15 @@ module.exports = {
           light: '#67e8f9',
           DEFAULT: '#06b6d4',
           dark: '#0e7490',
+        },
+        mySpend: {
+          splash: '#f5f5f5',
+          primary: '#f9f9f9',
+          DEFAULT: '#3778c2',
+          green: '#5fb523',
+          Text: '#434b54',
+          TextLight: '#666666',
+          TextLighter: '#999999',
         },
         silver: '#ecebff',
         'bubble-gum': '#ff77e9',
