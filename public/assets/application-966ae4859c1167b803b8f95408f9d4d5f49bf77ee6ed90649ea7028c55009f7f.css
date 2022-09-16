@@ -1,0 +1,25 @@
+*,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.container a:link {
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+
+.field {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.field:focus:active {
+    border: none;
+    outline: none;
+}
