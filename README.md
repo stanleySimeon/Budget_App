@@ -23,6 +23,10 @@
 
 ## Getting Started
 
+# Live demo link
+- [Demo Link](https://myspend.herokuapp.com/)
+
+# Presentation video
 - [video](https://www.loom.com/share/2e6952e445894b5295979b1eb25624bd)
 
 <img width="359" alt="Screen Shot 2022-09-16 at 22 50 14" src="https://user-images.githubusercontent.com/91237525/190835443-8e4aed07-7fa7-425c-bbf0-40e2c0de595e.png">
