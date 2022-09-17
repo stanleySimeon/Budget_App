@@ -23,6 +23,8 @@
 
 ## Getting Started
 
+- #[video](https://www.loom.com/share/2e6952e445894b5295979b1eb25624bd)
+
 To get a local copy of the app, run the following commands in your terminal:
 - `git clone https://github.com/medsonmoombe/my_spents.git`
 - `cd /my_spents.git`
