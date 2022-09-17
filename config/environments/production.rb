@@ -5,7 +5,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  image_tag '#', skip_pipeline: true
+  # image_tag '#', skip_pipeline: true
 
   config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.css *.js *.eot *.woff *.ttf *.svg)
   # Eager load code on boot. This eager loads most of Rails and
