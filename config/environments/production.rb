@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = true
   image_tag '#', skip_pipeline: true
 
-
+  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.css *.js *.eot *.woff *.ttf *.svg)
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -28,9 +28,10 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
+  config.assets.js_compressor = Uglifier.new(harmony: true)
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  # config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"

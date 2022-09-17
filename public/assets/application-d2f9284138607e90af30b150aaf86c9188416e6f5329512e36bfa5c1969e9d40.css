@@ -1,0 +1,15 @@
+*,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container a:link {
+    width: 100%;
+    text-decoration: none;
+    padding: 0;
+}
