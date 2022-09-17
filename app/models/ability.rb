@@ -2,12 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Category
-    can :create, Category
-    can :write, Category
-
-    can :read, Payment
-    can :create, Payment
+    can :manage, :all
+    can :manage, :all
 
     return unless user.present?
 
