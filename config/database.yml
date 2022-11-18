@@ -6,10 +6,14 @@ default: &default
 development:
   <<: *default
   database: my_spents_development
+  username: postgres
+  password: Martial@5009
 
 test:
   <<: *default
   database: my_spents_test
+  username: postgres
+  password: Martial@5009
 
 production:
   <<: *default

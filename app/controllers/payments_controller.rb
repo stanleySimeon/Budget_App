@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
     @payment = @user.payments.new(payment_params)
     if @payment.save
       flash[:notice] = 'Payment was successfully created.'
-      redirect_to category_payments_path
+      redirect_to categories_path
     else
       flash[:alert] = 'Payment was not created.'
       render :new, status: :unprocessable_entity

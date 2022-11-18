@@ -1,6 +1,8 @@
 <header class=" bg-mySpend px-2 h-16 sm:px-4 py-2 sm:py-0 sticky w-full flex justify-center z-20 top-0 left-0">
   <nav class="container flex flex-wrap sm:flex-nowrap justify-between p-0 items-center mx-auto">
     <span><%= image_tag('avatar', class:"h-10 w-10 p-0 m-auto") %></span>
+    <% if user_signed_in? %>
+    <% end %>
     <span class="text-center text-white text-md">CATEGORIES</span>
     <span>
       <% if user_signed_in? %>
@@ -17,8 +19,10 @@
     <% @categories.each do |category| %>
       <div class="card-body flex w-auto justify-between items-center p-2 mb-4 rounded-sm border shadow-md">
         <div class="flex justify-start w-auto gap-2">
-          <% if category.image.attached? %>
-            <%= image_tag category.image, skip_pipeline: true, alt: 'category icon', class: "h-16 w-16 rounded-sm" %>
+          <%= link_to category_path(category) do %>
+            <% if category.image.attached? %>
+              <%= image_tag category.image, skip_pipeline: true, alt: 'category icon', class: "h-16 w-16 rounded-sm" %>
+            <% end %>
           <% end %>
           <span class="flex flex-col justify-between">
             <%= link_to category.name, category_path(category), :class => "text-mySpend-Text text-lg font-bold" %>
@@ -27,12 +31,12 @@
             </span>
           </span>
         </div>
-        <div class="flex flex-col ">
+        <div class="flex flex-col justify-end items-end">
           <p class="price text-mySpend-Text">
             $<%= category.payments.sum(:amount) %>
           </p>
-          <% if can? :destroy, @category %>
-          <span><%= button_to "Delete", category_path(category), :method => 'delete', :class => "text-danger" %></span>
+          <% if category.payments.empty? %>
+            <span><%= button_to "Add Payment", new_category_payment_path(category), method: :get, :class => "text-mySpend" %></span>
           <% end %>
         </div>
       </div>

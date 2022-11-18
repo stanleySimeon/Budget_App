@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.where(user_id: current_user.id)
-    @categories = Category.includes(:user, :payments).order('created_at DESC')
   end
 
   def show
