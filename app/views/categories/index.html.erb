@@ -38,7 +38,7 @@
           <% if category.payments.empty? %>
             <span><%= button_to "Add Payment", new_category_payment_path(category), method: :get, :class => "text-mySpend" %></span>
           <% else %>
-          <span><%= button_to "Delete",  category_path(@categories), method: :delete, :class => "text-danger" %></span>
+          <span><%= button_to "Delete",  category_path(category), method: :delete, :class => "text-danger" %></span>
           <% end %>
         </div>
       </div>
