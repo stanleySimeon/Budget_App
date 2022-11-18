@@ -16,7 +16,7 @@
   <% if @payments.exists? %>
     <div class="container p-0 w-full h-auto">
       <% @payments.each do |payment| %>
-        <div class="container p-2 h-auto mt-4 flex justify-between items-center bg-light border rounded-md shadow-md">
+        <div class="container h-auto mt-4 md:mt-8 lg:mt-12 flex justify-between items-center bg-light border rounded-md shadow-md">
           <div class="flex flex-col">
             <span class="text-mySpend-Text fw-600 mb-2 text-lg">
               <%= payment.name %>

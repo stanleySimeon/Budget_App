@@ -14,10 +14,10 @@
     </span>
   </nav>
 </header>
-<div class="container w-56 h-auto py-4 mb-16 md:w-6/12 relative">
+<div class="container w-56 h-auto py-4 mb-16 relative ">
   <% if user_signed_in? %>
     <% @categories.each do |category| %>
-      <div class="card-body flex w-auto justify-between items-center p-2 mb-4 rounded-sm border shadow-md">
+      <div class="card-body md:mt-8 lg:mt-12 flex w-auto justify-between items-center p-2 mb-4 rounded-sm border shadow-md">
         <div class="flex justify-start w-auto gap-2">
           <%= link_to category_path(category) do %>
             <% if category.image.attached? %>
@@ -38,7 +38,7 @@
           <% if category.payments.empty? %>
             <span><%= button_to "Add Payment", new_category_payment_path(category), method: :get, :class => "text-mySpend" %></span>
           <% else %>
-          <span><%= button_to "Delete",  category_path(category), method: :delete, :class => "text-danger" %></span>
+            <span><%= button_to "Delete",  category_path(category), method: :delete, :class => "text-danger"  %></span>
           <% end %>
         </div>
       </div>
