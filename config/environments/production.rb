@@ -1,8 +1,17 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
+  config.action_mailer.default_url_options = { host: 'myspend.herokuapp.com', protocol: 'https' }
+  config.action_mmailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              :smtp,
+    port:                 587,
+    domain:               '4709a2f39b264a28ac87e8cc7246bcda.vfs.cloud9.eu-central-1.amazonaws.com',
+    user_name:            Rails.application.credentials.dig(:google_smtp, :email),
+    password:             Rails.application.credentials.dig(:google_smtp, :password),
+    authentication:       'plain',
+    enable_starttls_auto: true }
   # Code is not reloaded between requests.
   config.cache_classes = true
   # image_tag '#', skip_pipeline: true
@@ -69,7 +78,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
