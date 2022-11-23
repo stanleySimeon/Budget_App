@@ -1,17 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'myspend.herokuapp.com', protocol: 'https' }
-  config.action_mmailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              :smtp,
-    port:                 587,
-    domain:               '4709a2f39b264a28ac87e8cc7246bcda.vfs.cloud9.eu-central-1.amazonaws.com',
-    user_name:            Rails.application.credentials.dig(:google_smtp, :email),
-    password:             Rails.application.credentials.dig(:google_smtp, :password),
-    authentication:       'plain',
-    enable_starttls_auto: true }
+  # Settings specified here will take precedence over those in config/application.rb.
+
   # Code is not reloaded between requests.
   config.cache_classes = true
   # image_tag '#', skip_pipeline: true
@@ -40,7 +31,7 @@ Rails.application.configure do
   # config.assets.js_compressor = Uglifier.new(harmony: true)
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -48,6 +39,7 @@ Rails.application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -78,7 +70,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
