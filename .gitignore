@@ -35,3 +35,4 @@
 Gemfile.lock
 /development
 /credentials.yml.enc
+.env
