@@ -1,9 +1,8 @@
 # ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 <a name="readme-top"></a>
-
 <div align="center">
-  <h3><b>RECIPE APP</b></h3>
+  <h3><b>BUDGET APP</b></h3>
 </div>
 
 <!-- TABLE OF CONTENTS -->
