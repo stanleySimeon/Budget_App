@@ -1,74 +1,179 @@
 # ![](https://img.shields.io/badge/Microverse-blueviolet)
-# Budget App
 
-> This is a Ruby on Rails mobile web application that allows users to manage their budget, users have a list of transactions associated with a category, so that they can see how much money they spent and on what.
+<a name="readme-top"></a>
+<div align="center">
+  <h3><b>BUDGET APP</b></h3>
+</div>
 
-## Built With
+<!-- TABLE OF CONTENTS -->
 
-- Ruby on Rails
-- Ruby
-- Tailwind CSS
+# 📗 Table of Contents
 
-## Prerequisites
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#triangular_flag_on_post-deployment)
+- [👥 Authors](#authors)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [❓ FAQ](#faq)
+- [📝 License](#license)
 
-- Ruby
-- Ruby on Rails
-- PostgreSQL
+<!-- PROJECT DESCRIPTION -->
 
-## Install
+# 📖 RECIPE APP <a name="about-project"></a>
 
-- Ruby
-- Ruby on Rails(as a gem)
-- Postgresql database
+**BUDGET APP** A mobile Web Application built using Ruby on Rails, which allows users to manage their budget. The application provides a list of transactions associated with a category, helping users to keep track of their expenses and understand where their money is going.
 
-## Getting Started
+## 🛠 Built With <a name="built-with"></a>
 
-# Live demo link
+- [Ruby on rails](https://rubyonrails.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-- [Demo Link](https://myspend.herokuapp.com/)
+### Tech Stack <a name="tech-stack"></a>
 
-<img width="359" alt="Screen Shot 2022-09-16 at 22 50 14" src="https://user-images.githubusercontent.com/91237525/190835443-8e4aed07-7fa7-425c-bbf0-40e2c0de595e.png">
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://www.rubyonrails.org/">Ruby on rails</a></li>
+    <li><a href="https://www.tailwindcss.com/">Tailwind CSS</a></li>
+  </ul>
+  <summary>Server</summary>
+    <ul>
+      <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    </ul>
+</details>
 
-<img width="359" alt="Screen Shot 2022-09-16 at 22 49 56" src="https://user-images.githubusercontent.com/91237525/190835449-29a20f12-b44d-4465-b61a-66c14bbfb289.png">
+<!-- LIVE DEMO -->
 
-To get a local copy of the app, run the following commands in your terminal:
-- `git clone https://github.com/medsonmoombe/my_spents.git`
-- `cd /my_spents.git`
-- `bundle install`
+## 🚀 Live Demo <a name="live-demo"></a>
 
-Run the following commands to run the app
+- [Live Demo Link]()
 
-- `rails db:create`
-- `rails db:migrate`
-- `rails s`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-In your browser, go to
+<!-- GETTING STARTED -->
 
-- `http://localhost:3000`
+## 💻 Getting Started <a name="getting-started"></a>
 
-## Testing
-- To install rspec: gem install rspec
-- To run all the tests: rspec ./spec
+To get a local copy up and running, follow these steps.
 
+### Prerequisites
 
-## Authors
+In order to run this project you need:
 
- 👤 **Stanley SIMEON**
-- GitHub: [Github](https://github.com/stanleySimeon)
-- Twitter: [Twitter](https://twitter.com/mstanleyme)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/stanleysimeon/)
+```sh
+ npm
+ Ruby
+ Gem
+ cancan
+ Rspec
+```
 
+### Setup
 
-## 🤝 Contributing
+Clone this repository to your desired folder:
+
+```sh
+  cd your_folder_name (where you want to clone the project)
+  git clone https://github.com/stanleySimeon/Budget_App.git
+```
+
+### Install
+
+Install this project with:
+
+```sh
+  cd Budget_App
+  bundle install
+  npm install
+  rake db:create
+  rake db:migrate
+  rake assets:precompile
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+  rails s
+  and
+  open http://localhost:3000
+```
+
+### Run tests
+
+To run the tests, execute the following command:
+
+```sh
+  rspec
+```
+
+### Deployment
+
+You can deploy this project using:
+
+  ```sh
+    heroku login
+    heroku create Budget_App
+    git push heroku master
+  ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+👤 **Author**
+
+- GitHub: [@stanleySimeon](https://github.com/stanleySimeon)
+- Twitter: [@mstanleyme](https://twitter.com/mstanleyme)
+- LinkedIn: [@stanleysimeon](https://linkedin.com/in/stanleysimeon)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/aimalamiri/Ruby-Catalog/issues).
+Feel free to check the [issues page](../../issues/).
 
-## Show your support
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Give a ⭐️ if you like this project!
+<!-- SUPPORT -->
 
-## 📝 License
+## ⭐️ Show your support <a name="support"></a>
 
-This project is [MIT](./LICENSE) licensed
+If you like this project, please give it a ⭐️!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+- I would like to thank the following people:
+
+  - [@microverse](https://github.com/microverseinc) for the opportunity to learn and grow as a developer.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
