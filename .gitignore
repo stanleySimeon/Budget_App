@@ -38,3 +38,5 @@ Gemfile.lock
 .env
 env
 /env/master.key
+/config/credentials.yml.enc
+/config/master.key
