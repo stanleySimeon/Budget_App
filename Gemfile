@@ -57,6 +57,6 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'font-awesome-sass', '~> 6.2.1'
 gem 'hirb'
-gem "font-awesome-sass", "~> 6.2.1"
 gem 'tailwindcss-rails', '~> 2.0'

@@ -7,7 +7,7 @@ class Ability
 
     return unless user.present?
 
-    can :destroy, Category, user: user
-    can :destroy, Payment, user: user
+    can(:destroy, Category, user:)
+    can :destroy, Payment, user:
   end
 end
