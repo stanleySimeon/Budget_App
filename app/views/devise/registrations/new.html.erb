@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
-<header class=" bg-mySpend px-2 h-16 sm:px-4 py-2 sm:py-0 sticky w-full flex justify-center z-20 top-0 left-0">
+<header class=" bg-mySpend px-3 h-16 sm:px-4 py-2 sm:py-0 sticky w-full flex justify-center z-20 top-0 left-0">
   <nav class="container flex flex-wrap sm:flex-nowrap justify-between p-0 items-center mx-auto">
     <span><%= link_to image_tag('arrow_left.svg', class:"h-6 w-6 p-0 m-auto"), root_path %></span>
     <span class="text-center text-white text-md">REGISTER</span>
@@ -12,10 +12,9 @@
     </span>
   </nav>
 </header>
-<div class="container bg-white md:w-6/12 md:m-auto p-2 border-y-2 border-neutral-300 shadow-md mt-4">
-    <div class="w-full pt-2 pb-3 mb-2 gap-2 flex justify-start items-center border-b border-grayLight">
-      <%= f.file_field :icon, autocomplete: 'username', :size => "260x180", class: " bg-mySpend-TextLight" %>
-    <span class="text-mySpend-TextLight">Upload picture</span>
+<div class="container bg-white md:w-6/12 md:m-auto p-3 border-y-2 border-neutral-300 shadow-md mt-4">
+    <div class="md:w-full pt-2 pb-3 mb-2 gap-2 flex justify-start items-center border-b border-grayLight">
+      <%= f.file_field :icon, :size => "260x180", required: true, class: " bg-mySpend-TextLight bg-none" %>
     </div>
     <%= f.label :name, 'Full Name', class: 'hidden' %>
     <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Full Name", class: "field w-full py-2 mb-3 px-1 bg-transparent", required: true %>
