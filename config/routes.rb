@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     resources :payments
   end
   root 'splashes#index'
+  get '/font-awesome', to: 'static#font_awesome'
 end
