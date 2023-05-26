@@ -10,7 +10,7 @@ gem 'railties'
 gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem "pg", "~> 1.1"
 
 gem 'image_processing', '~> 1.2'
 
