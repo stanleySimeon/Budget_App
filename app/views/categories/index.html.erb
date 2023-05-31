@@ -6,7 +6,7 @@
           <div class="w-48 flex justify-start">
             <%= link_to category_path(category) do %>
               <% if category.image.attached? %>
-                <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "w-28 h-18 max-h-36 object-cover" %>
+                <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "w-28 h-20 max-h-20 object-cover" %>
               <% end %>
             <% end %>
             <div class="flex flex-col justify-between">
