@@ -1,11 +1,11 @@
-<div class="flex flex-col justify-center items-center container-fluid fixed z-50 w-10/12 md:w-8/12 lg:w-6/12 bg-transparent px-4 top-1/3 left-1/12 right-1/12 py-2 rounded" role="alert">
-  <div class="container bg-white h-64 py-2 shadow-md">
+<div class="flex flex-col justify-center items-center container-fluid bg-transparent" role="alert">
+  <div class="container bg-white h-16 py-2 shadow-md">
     <span class='flex justify-end items-center rounded-md'>
       <%= button_to image_tag('close_button'), new_category_path(@category), class: "close w-5 h-5 rounded-full text-center items-center", data_dismiss: "alert" %>
     </span>
     <div class="alert flex flex-col w-full flex-wrap justify-center items-center mb-4 pt-4">
-      <span><%= image_tag "complete_check.svg", alt: 'complete icon', class: "w-16 h-16 rounded-full bg-mySpend-green mb-2" %></span>
-      <h4>Complete</h4>
+      <span><%= image_tag "complete_check.svg", alt: 'complete check', class: "w-16 h-16 rounded-full bg-bdgt-green mb-2" %></span>
+      <h4>Complete!</h4>
       <span class="notice block text-center"><%= notice %></span>
     </div>
   </div>
