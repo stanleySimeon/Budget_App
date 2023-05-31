@@ -1,0 +1,35 @@
+<% resource ||= User.new %>
+<% resource_name ||= :user %>
+
+<%= form_with(model: resource, local: true, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+  <div class="container w-full flex flex-col space-y-6"> <h1 class="text-bdgt font-medium text-4xl">Sign Up</h1>
+    <div class="md:w-full pt-2 mb-2 gap-2 flex flex-col justify-start">
+      <%= f.file_field :icon, id: "icon", class: "", onchange: "previewImage()" %>
+      <div id="preview-image" class="hidden"></div>
+    </div>
+    <%= f.label :name, 'Full Name', class: 'hidden' %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Full Name", class: "field w-full py-2 px-1 bg-transparent border-b border-bdgt", required: true %>
+    <%= f.label :email, 'Email', class: 'hidden'%>
+    <%= f.email_field :email, autofocus: false, autocomplete: "email", placeholder: "Email", class: "field w-full py-2 px-1 bg-transparent border-b border-bdgt", required: true %>
+    <%= f.label :password, 'Password', class: 'hidden'%>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password', class: "field w-full py-2 px-1 bg-transparent border-b border-bdgt", required: true %>
+    <%= submit_tag "Submit", class: "w-full bg-gradient-to-r from-bdgt-secondary to-bdgt-green text-white text-center py-2 cursor-pointer" %>
+  </div>
+<% end %>
+
+<script>
+  function previewImage() {
+    const previewImage = document.getElementById("preview-image");
+    const file = document.getElementById("icon").files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+      previewImage.style.display = "block";
+      previewImage.innerHTML = '<img src="' + reader.result + '" style="height: 150px; width: 250px; max-width: 250px; max-height: 150px; border-radius: 8px; object-fit: cover;" />';
+      },
+      false
+    ); 
+    if (file) { 
+      reader.readAsDataURL(file); 
+    }
+  }
+</script>
