@@ -40,3 +40,4 @@ env
 /env/master.key
 /config/credentials.yml.enc
 /config/master.key
+/config/secrets.yml

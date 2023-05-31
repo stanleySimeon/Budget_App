@@ -1,7 +1,38 @@
-    <div class="card z-50 top-0 h-screen bg-mySpend-splash flex flex-col justify-center align-items-center">
-      <h1 class="text-mySpend font-medium text-5xl -mt-24 md:text-9xl text-center">Expense <span class="text-mySpend-green">Tracker</span></h1>
-      <div class="container w-full absolute bottom-12 md:relative md:mt-16 md:px-0 md:flex md:justify-center align-items-center md:gap-4 space-x-3 md:space-x-0">
-          <%= button_to "LOG IN", new_user_session_path, method: :get, :class => "bg-mySpend w-full py-2 md:px-6 text-white" %>
-          <%= button_to "SIGN UP", new_user_registration_path, method: :get, :class => "bg-transparent w-full py-2 md:px-6 border border-mySpend text-mySpend-Text md:text-mySpend-Text" %>
+<div class="container-fluid h-screen md:flex">
+  <div class="relative md:w-1/2 bg-black h-full flex flex-col justify-center">
+    <div class="overlay w-full h-full absolute top-0 left-0 mx-auto z-20 bg-black opacity-80"></div>
+    <div class="w-full h-full absolute top-0 left-0 mx-auto z-10">
+      <img src="./../assets/images/scott-graham-OQMZwNd3ThU-unsplash.AVIF" alt="background" class="object-cover h-full" />
+    </div>
+    <div class="z-30 flex flex-col justify-center items-center space-y-8 md:space-y-12">
+      <h1 class="text-bdgt font-medium text-5xl lg:text-6xl text-center">Expense <span class="text-bdgt-green">Tracker</span></h1>
+      <div class="w-auto flex justify-center items-center space-x-4">
+        <%= button_to "LOG IN", login_path, class: "bg-bdgt px-8 py-2.5 text-bdgt-white", onclick: "renderSession(); event.preventDefault();" %> 
+        <%= button_to "SIGN UP", registrations_path, class: "bg-transparent px-8 py-2 text-bdgt-white border border-bdgt-green", onclick: "renderRegistrations(); event.preventDefault();" %>
       </div>
     </div>
+  </div>
+  <div class="md:w-1/2 flex justify-center items-center h-full px-3 md:px-24">
+    <div id="session-content" class="w-full">
+      <%= render partial: "devise/sessions/new" %> 
+    </div>
+    <div id="registrations-content" class="hidden w-full">
+      <%= render partial: "devise/registrations/new" %>
+    </div>
+  </div>
+</div>
+
+<script>
+  function renderSession() {
+    document.getElementById("session-content").style.display = "block";
+    document.getElementById("registrations-content").style.display = "none";
+  }
+  function renderRegistrations() {
+    document.getElementById("session-content").style.display = "none";
+    document.getElementById("registrations-content").style.display = "block";
+  }
+  document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById("session-content").style.display = "block";
+    document.getElementById("registrations-content").style.display = "none";
+  });
+</script>

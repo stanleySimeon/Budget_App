@@ -1,0 +1,33 @@
+<header class="w-full h-16 md:w-52 md:h-screen bg-bdgt-secondary md:bg-gradient-to-b from-bdgt-secondary md:to-bdgt-green px-3 py-2 flex md:flex-col fixed top-0 left-0 z-40 mx-auto">
+  <nav class="container flex md:flex-col justify-between md:justify-start md:py-4 items-center mx-auto">
+    <div class="flex justify-center items-center">
+      <%= link_to edit_user_registration_path(), class: 'text-white text-center' do %>
+        <% if user_signed_in? && current_user.icon.present? && current_user.icon.attached? %>
+          <%= image_tag current_user.icon, class:"h-8 w-8 md:h-10 md:w-10 p-0 m-auto" %>
+        <% else %>
+          <%= image_tag 'avatar', class:"h-8 w-8 md:h-10 md:w-10 p-0 m-auto" %>
+        <% end %>
+      <% end %>
+    </div>
+    <span class="text-white text-center text-sm font-bold">
+      <%= controller_name == 'categories' ? 'CATEGORIES' : (action_name == 'edit' ? 'EDIT PROFILE' : 'PAYMENT') %>
+    </span>
+    <span>
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path(), method: :delete, id: 'sign_out_btn' do %>
+          <%= image_tag 'logout', class:"text-white h-6 w-6 md:h-10 md:w-10 p-0 m-auto" %>
+        <% end %>
+        <% if can? :create, @category %>
+          <%= link_to "New category", new_category_path, class: "bg-bdgt hidden md:block" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'text-white text-center' %>
+        <%= form_tag user_session_path, method: :post do %>
+          <%= email_field_tag :user_email, nil, placeholder: "Email" %>
+          <%= password_field_tag :user_password, nil, placeholder: "Password" %>
+          <%= submit_tag "Sign In", class: "text-white text-center" %>
+        <% end %>
+      <% end %>
+    </span>
+  </nav>
+</header>
