@@ -7,14 +7,14 @@
     <div class="z-30 flex flex-col justify-center items-center space-y-8 md:space-y-12">
       <h1 class="text-bdgt font-medium text-5xl lg:text-6xl text-center">Expense <span class="text-bdgt-green">Tracker</span></h1>
       <div class="w-auto flex justify-center items-center space-x-4">
-        <%= button_to "LOG IN", login_path, class: "bg-bdgt px-8 py-2.5 text-bdgt-white", onclick: "renderSession(); event.preventDefault();" %> 
-        <%= button_to "SIGN UP", registrations_path, class: "bg-transparent px-8 py-2 text-bdgt-white border border-bdgt-green", onclick: "renderRegistrations(); event.preventDefault();" %>
+        <%= button_to "LOG IN", login_path, id: "login-btn", class: "bg-bdgt px-8 py-2.5 text-bdgt-white", onclick: "renderSession(); event.preventDefault();" %> 
+        <%= button_to "SIGN UP", registrations_path, id: "singup-btn", class: "bg-transparent px-8 py-2 text-bdgt-white border border-bdgt-green", onclick: "renderRegistrations(); event.preventDefault();" %>
       </div>
     </div>
   </div>
-  <div class="md:w-1/2 flex justify-center items-center h-full px-3 md:px-24">
+  <div id="overlay" class="hidden absolute md:relative top-0 left-0 mx-auto w-full md:w-1/2 md:flex justify-center items-center h-full px-3 md:px-24">
     <div id="session-content" class="w-full">
-      <%= render partial: "devise/sessions/new" %> 
+      <%= render partial: "devise/sessions/new" %>
     </div>
     <div id="registrations-content" class="hidden w-full">
       <%= render partial: "devise/registrations/new" %>
@@ -23,7 +23,7 @@
 </div>
 
 <script>
-  function renderSession() {
+  function renderSession() { 
     document.getElementById("session-content").style.display = "block";
     document.getElementById("registrations-content").style.display = "none";
   }
@@ -34,5 +34,17 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("session-content").style.display = "block";
     document.getElementById("registrations-content").style.display = "none";
+  });
+  document.getElementById("login-btn").addEventListener("click", function (event) {
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "flex";
+    overlay.style.zIndex = "990";
+    overlay.style.backgroundColor = "#ffffff"
+  });
+  document.getElementById("singup-btn").addEventListener("click", function (event) {
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "flex";
+    overlay.style.zIndex = "990";
+    overlay.style.backgroundColor = "#ffffff"
   });
 </script>
