@@ -1,43 +1,68 @@
-<div class="container h-auto py-4 px-3 mb-16 relative">
+<div class="container h-auto py-4 px-3 mb-16 relative md:grid grid-cols-2 gap-3">
   <% if user_signed_in? %>
     <% if @categories.exists? %>
       <% @categories.each do |category| %>
-        <div class="card md:mt-8 flex w-auto justify-between items-center mb-4 border border-bdgt-borderLight shadow-lg">
-          <div class="w-48 flex justify-start">
+        <div class="card h-auto flex w-auto justify-between  mb-4 border border-bdgt-borderLight shadow-lg rounded-xl">
+          <div class="w-48 md:w-auto flex justify-start md:space-x-4">
             <%= link_to category_path(category) do %>
               <% if category.image.attached? %>
-                <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "w-28 h-20 max-h-20 object-cover" %>
+                <div class="relative md:w-auto rounded-l-xl">
+                  <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "when_hover w-28 h-20 max-h-20 md:w-60 md:h-40 md:max-h-40 object-cover rounded-l-xl" %>
+                  <span class="overlay_hover hidden absolute justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mx-auto w-full h-full bg-bdgt-secondary bg-opacity-75 text-bdgt-white text-xl px-1 py-1 text-center">
+                    <%= category.payments.count %>
+                    <% if category.payments.count <= 1 %>
+                      payment
+                    <% else %>
+                      payments
+                    <% end %>
+                  </span>
+                </div>
               <% end %>
             <% end %>
-            <div class="flex flex-col justify-between">
-              <%= link_to category.name, category_path(category), :class => "text-bdgt-Text text-lg font-bold" %>
-              <span class="text-xs text-bdgt-Text">
-                <%= category.created_at.strftime("%d/%m/%Y") %> at <%= category.created_at.strftime("%H:%M") %>
-              </span>
+            <div class="w-28 md:w-auto py-2 flex flex-col justify-between">
+              <%= link_to category.name, category_path(category), :class => "text-bdgt-Text text-lg md:text-2xl font-bold" %>
+              <div class="w-16 flex justify-start items-start">
+                <%= link_to category_path(category) do %>
+                  <%= image_tag('info.svg', :alt => "info icon", :class => "animate-pulse") %>
+                <% end %>
+              </div>
             </div>
           </div>
-          <div class="w-32 flex flex-col justify-start items-start px-2">
-            <p class="price text-bdgt-Text">
-              $<%= category.payments.sum(:amount) %>
-            </p>
+          <div class="w-auto flex flex-col justify-between items-center p-2">
+            <span class="price text-bdgt-Text">
+              Bill: $<%= category.payments.sum(:amount) %>
+            </span>
             <% if category.payments.empty? %>
-              <span><%= button_to "Add Payment", new_category_payment_path(category), method: :get, :class => "text-bdgt" %></span>
+              <%= button_to "Add Payment", new_category_payment_path(category), method: :get, :class => "w-32 bg-bdgt-green py-1 px-2  text-bdgt-white rounded rounded-lg" %>
             <% else %>
-              <span><%= button_to "Delete",  category_path(category), method: :delete, :class => "text-bdgt-danger"  %></span>
+              <%= button_to "Delete",  category_path(category), method: :delete, :class => "w-32 bg-bdgt-danger py-1 px-2  text-bdgt-white rounded rounded-lg"  %>
             <% end %>
           </div>
         </div>
       <% end %>
     <% else %>
       <div>
-        <h2 class="text-center text-bdgt-Text text-xl mt-48">No Categories Available Now! <br /><span class="md:hidden">Click the button bellow to add a new category.</span></h2>
+        <h2 class="text-center text-bdgt-Text text-xl mt-48">No Categories Available Now! <br /><span class="">Click the button bellow to add a new category.</span></h2>
         <%= image_tag('arrowDown.svg', :alt => "arrow down icon", class:"h-10 w-10 p-0 fw-bold mx-auto mt-4 md:hidden") %>
       </div>
     <% end %>
   <% end %>
 </div>
 <% if can? :create, @category %>
-  <span class="bg-gradient-to-r from-bdgt-secondary to-bdgt-green flex flex-col justify-center items-center fixed h-12 text-center text-bdgt-white bottom-0 left-0 right-0 md:hidden">
+  <span class="bg-gradient-to-r from-bdgt-secondary to-bdgt-green flex flex-col hover:shadow-md hover:skew-x-6 justify-center items-center fixed md:relative md:rounded-full md:w-52 md:-mt-12 h-12 text-center text-bdgt-white bottom-0 left-0 right-0">
     <%= link_to "New category", new_category_path, class: "text-center" %>
   </span>
 <% end %>
+
+
+<script>
+  const overlay = document.querySelectorAll(".overlay_hover").addEventListener("mouseover", function (e) {
+    overlay.style.display = "flex";
+  });
+  const when_hover = document.querySelectorAll(".when_hover").addEventListener("mouseleave", function (e) {
+    setTimeout(function () {
+      e.preventDefault();
+      overlay.style.display = "none";
+    }, 1000);
+  });
+</script>

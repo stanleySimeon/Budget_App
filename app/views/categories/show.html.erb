@@ -15,14 +15,19 @@
             $<%= payment.amount %>
           </span>
         </div>
-        <div class="w-32 bg-bdgt-danger text-center text-bdgt-white py-2 mt-8">
-          <%= link_to "Back", root_path %>
-        </div>
       <% end %>
+        <div class="flex justify-between items-center mt-8">
+          <div class="w-32 bg-bdgt-green text-center text-bdgt-white py-2">
+            <%= link_to "New Payment", new_category_payment_path(@category), class: "text-center" %>
+          </div>
+          <div class="w-32 bg-bdgt-danger text-center text-bdgt-white py-2">
+            <%= link_to "Back", root_path %>
+          </div>
+        </div>
     </div>
     <% else %>
       <div>
-        <h2 class="text-center text-bdgt-Text text-xl mt-48">No Payments Available Now! <br /><span class="md:hidden">Click the button bellow to add a new payment.</span></h2>
+        <h2 class="text-center text-bdgt-Text text-xl mt-48">No Payments Available Now! <br /><span class="">Click the button bellow to add a new payment.</span></h2>
         <%= image_tag('arrowDown.svg', :alt => "arrow down icon", class:"h-10 w-10 p-0 fw-bold mx-auto mt-4 md:hidden") %>
       </div>
     <% end %>
@@ -30,3 +35,4 @@
 <span class="bg-gradient-to-r from-bdgt-secondary to-bdgt-green flex flex-col justify-center items-center fixed h-12 text-center text-bdgt-white bottom-0 left-0 right-0 md:hidden">
   <%= link_to "New Payment", new_category_payment_path(@category), class: "text-center" %>
 </span>
+<%# If categories/id payment exist dont show the button add payment %>
