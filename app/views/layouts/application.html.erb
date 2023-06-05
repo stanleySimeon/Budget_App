@@ -13,15 +13,17 @@
 
 <body>
   <% if user_signed_in? %>
-    <main class="root relative container-fluid md:flex p-0 h-auto pt-16">
+    <main class="root relative container-fluid md:flex justify-end p-0 h-auto">
       <%= render 'layouts/header' %>
-      <%= yield %>
-      <% if notice %>
-        <%= render 'layouts/notice' %>
-      <% end %>
-      <% if alert %>
-        <%= render 'layouts/alert' %>
-      <% end %>
+      <section class="md:w-10/12 md:h-auto md:container-fluid md:flex flex-col justify-center items-center md:px-16 py-16">
+        <%= yield %>
+        <% if notice %>
+          <%= render 'layouts/notice' %>
+        <% end %>
+        <% if alert %>
+          <%= render 'layouts/alert' %>
+        <% end %>
+      </section>
     </main>
   <% else %>
     <main class="root container-fluid h-auto">
