@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   has_one_attached :image, dependent: :destroy
 
   validates :name, presence: true
-  validates :image, presence: true
+  validates :image, presence: true, file_size: { less_than: 3.megabytes }, file_content_type: { allow: ['image/jpeg', 'image/jpg', 'image/avif', 'image/png'] }
   validates :user_id, presence: true
 
   def self.search(search)

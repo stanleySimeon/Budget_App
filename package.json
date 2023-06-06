@@ -4,7 +4,10 @@
   },
   "dependencies": {
     "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/activestorage": "^7.0.5",
+    "@rails/ujs": "^7.0.5",
     "controllers": "^0.0.2",
+    "stimulus": "^3.2.1",
     "tailwindcss-stimulus-components": "^3.0.4"
   }
 }

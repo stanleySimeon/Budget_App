@@ -2,13 +2,13 @@
   <% if user_signed_in? %>
     <% if @categories.exists? %>
       <% @categories.each do |category| %>
-        <div class="card h-auto flex w-auto justify-between  mb-4 border border-bdgt-borderLight shadow-lg rounded-xl">
+        <div class="card h-auto flex w-auto justify-between  mb-4 border border-bdgt-borderLight shadow-sm rounded-xl bg-bdgt-white_bg">
           <div class="w-48 md:w-auto flex justify-start md:space-x-4">
             <%= link_to category_path(category) do %>
               <% if category.image.attached? %>
                 <div class="relative md:w-auto rounded-l-xl">
-                  <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "when_hover w-28 h-20 max-h-20 md:w-60 md:h-40 md:max-h-40 object-cover rounded-l-xl" %>
-                  <span class="overlay_hover hidden absolute justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mx-auto w-full h-full bg-bdgt-secondary bg-opacity-75 text-bdgt-white text-xl px-1 py-1 text-center">
+                  <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "when_hover w-28 h-20 max-h-20 md:w-60 md:h-40 md:max-h-40 object-cover rounded-l-lg" %>
+                  <span class="overlay_hover hidden absolute justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mx-auto w-full h-full bg-bdgt-secondary bg-opacity-75 text-bdgt-white text-xl px-1 py-1 text-center rounded-l-lg">
                     <%= category.payments.count %>
                     <% if category.payments.count <= 1 %>
                       payment
@@ -32,16 +32,19 @@
             <span class="price text-bdgt-Text">
               Bill: $<%= category.payments.sum(:amount) %>
             </span>
-            <% if category.payments.empty? %>
-              <%= button_to "Add Payment", new_category_payment_path(category), method: :get, :class => "w-32 bg-bdgt-green py-1 px-2  text-bdgt-white rounded rounded-lg" %>
-            <% else %>
-              <%= button_to "Delete",  category_path(category), method: :delete, :class => "w-32 bg-bdgt-danger py-1 px-2  text-bdgt-white rounded rounded-lg"  %>
-            <% end %>
+            <div class="flex justify-between items-center space-x-4">
+              <%= button_to new_category_payment_path(category), method: :get do %>
+                <%= image_tag('add.svg', :alt => "trash icon", :class => "w-6 h-6") %>
+              <% end %>
+              <%= button_to category_path(category), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <%= image_tag('trash.svg', :alt => "trash icon", :class => "w-6 h-6") %>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
     <% else %>
-      <div>
+      <div class="md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
         <h2 class="text-center text-bdgt-Text text-xl mt-48">No Categories Available Now! <br /><span class="">Click the button bellow to add a new category.</span></h2>
         <%= image_tag('arrowDown.svg', :alt => "arrow down icon", class:"h-10 w-10 p-0 fw-bold mx-auto mt-4 md:hidden") %>
       </div>
@@ -49,20 +52,25 @@
   <% end %>
 </div>
 <% if can? :create, @category %>
-  <span class="bg-gradient-to-r from-bdgt-secondary to-bdgt-green flex flex-col hover:shadow-md hover:skew-x-6 justify-center items-center fixed md:relative md:rounded-full md:w-52 md:-mt-12 h-12 text-center text-bdgt-white bottom-0 left-0 right-0">
+  <span class="bg-gradient-to-r from-bdgt-secondary to-bdgt-green flex flex-col md:hover:shadow-md md:hover:skew-x-6 justify-center items-center fixed md:relative md:rounded-full md:w-52 md:-mt-12 h-12 text-center text-bdgt-white bottom-0 left-0 right-0">
     <%= link_to "New category", new_category_path, class: "text-center" %>
   </span>
 <% end %>
 
-
 <script>
-  const overlay = document.querySelectorAll(".overlay_hover").addEventListener("mouseover", function (e) {
-    overlay.style.display = "flex";
+  const overlay = document.querySelectorAll(".overlay_hover");
+  const when_hover = document.querySelectorAll(".when_hover");
+
+  when_hover.forEach((element, index) => {
+    element.addEventListener("mouseover", event => {
+      overlay[index].style.display = "flex";
+    });
   });
-  const when_hover = document.querySelectorAll(".when_hover").addEventListener("mouseleave", function (e) {
-    setTimeout(function () {
-      e.preventDefault();
-      overlay.style.display = "none";
-    }, 1000);
+
+  overlay.forEach((element, index) => {
+    element.addEventListener("mouseleave", event => {
+      overlay[index].style.display = "none";
+      event.stopPropagation();
+    });
   });
 </script>

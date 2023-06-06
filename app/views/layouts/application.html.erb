@@ -8,10 +8,11 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application' %>
     <%= javascript_importmap_tags %>
   </head>
 
-<body>
+<body class="" turbo:false>
   <% if user_signed_in? %>
     <main class="root relative container-fluid md:flex justify-end p-0 h-auto">
       <%= render 'layouts/header' %>
@@ -21,7 +22,7 @@
           <%= render 'layouts/notice' %>
         <% end %>
         <% if alert %>
-          <%= render 'layouts/alert' %>
+          <%= render partial: 'layouts/alert' %>
         <% end %>
       </section>
     </main>

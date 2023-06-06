@@ -3,13 +3,13 @@
     <div class="flex justify-center items-center md:mb-8">
       <%= link_to edit_user_registration_path(), class: 'text-white text-center' do %>
         <% if user_signed_in? && current_user.icon.present? && current_user.icon.attached? %>
-          <%= image_tag current_user.icon, class:"h-8 w-8 md:h-10 md:w-10 p-0 m-auto" %>
+          <%= image_tag current_user.icon, class:"h-8 w-8 md:h-10 md:w-10 p-0 m-auto rounded-full object-cover" %>
         <% else %>
           <%= image_tag 'avatar', class:"h-8 w-8 md:h-10 md:w-10 p-0 m-auto" %>
         <% end %>
       <% end %>
     </div>
-    <span class="text-white text-center text-sm font-bold">
+    <span class="text-bdgt-white text-center text-base font-bold">
       <%= controller_name == 'categories' ? 'CATEGORIES' : (action_name == 'edit' ? 'EDIT PROFILE' : 'PAYMENT') %>
     </span>
     <span>

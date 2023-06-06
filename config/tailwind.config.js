@@ -23,6 +23,7 @@ module.exports = {
           Text: '#434b54',
           TextLight: '#666666',
           borderLight: '#FAF7F7',
+          white_bg: '#F7F7F7',
         },
       },
       keyframes: {

@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = 'Category was successfully created.'
       redirect_to new_category_payment_url(@category)
     else
-      flash[:alert] = 'Category was not created.'
+      flash[:alert] = 'Category was not created, Image size should be less than 3MB!'
       render :new, status: :unprocessable_entity
     end
   end
