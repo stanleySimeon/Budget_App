@@ -7,8 +7,8 @@
             <%= link_to category_path(category) do %>
               <% if category.image.attached? %>
                 <div class="relative md:w-auto rounded-l-xl">
-                  <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "when_hover w-28 h-20 max-h-20 md:w-60 md:h-40 md:max-h-40 object-cover rounded-l-xl" %>
-                  <span class="overlay_hover hidden absolute justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mx-auto w-full h-full bg-bdgt-secondary bg-opacity-75 text-bdgt-white text-xl px-1 py-1 text-center">
+                  <%= image_tag category.image, skip_pipeline: true, alt: 'category image', class: "when_hover w-28 h-20 max-h-20 md:w-60 md:h-40 md:max-h-40 object-cover rounded-l-lg" %>
+                  <span class="overlay_hover hidden absolute justify-center items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mx-auto w-full h-full bg-bdgt-secondary bg-opacity-75 text-bdgt-white text-xl px-1 py-1 text-center rounded-l-lg">
                     <%= category.payments.count %>
                     <% if category.payments.count <= 1 %>
                       payment
@@ -57,22 +57,20 @@
   </span>
 <% end %>
 
-
 <script>
-  const overlays = document.querySelectorAll(".overlay_hover");
+  const overlay = document.querySelectorAll(".overlay_hover");
+  const when_hover = document.querySelectorAll(".when_hover");
 
-  overlays.forEach(function(overlay) {
-    overlay.addEventListener("mouseover", function(e) {
-      overlay.style.display = "flex";
+  when_hover.forEach((element, index) => {
+    element.addEventListener("mouseover", event => {
+      overlay[index].style.display = "flex";
     });
+  });
 
-    const when_hover = overlay.querySelector(".when_hover");
-
-    when_hover.addEventListener("mouseleave", function(e) {
-      setTimeout(function() {
-        e.preventDefault();
-        overlay.style.display = "none";
-      }, 1000);
+  overlay.forEach((element, index) => {
+    element.addEventListener("mouseleave", event => {
+      overlay[index].style.display = "none";
+      event.stopPropagation();
     });
   });
 </script>
