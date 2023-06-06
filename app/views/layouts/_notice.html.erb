@@ -1,5 +1,5 @@
-<div class="popup w-full fixed top-1/2 bottom-1/2 mx-auto flex flex-col px-3 justify-center items-center container-fluid bg-transparent transition-opacity duration-1000 ease-out shadow-lg" role="notice">
-  <div class="card w-full bg-bdgt-white h-auto py-2 border border-bdgt-green shadow-md">
+<div class="popup w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col px-3 justify-center items-center container-fluid bg-transparent transition-opacity duration-1000 ease-out shadow-sm" role="notice">
+  <div class="card w-full bg-bdgt-white h-auto py-2 border border-bdgt-green shadow-sm rounded-lg">
     <div class="alert flex flex-col w-full flex-wrap justify-center items-center mb-4 pt-4">
       <%= image_tag "complete_check.svg", alt: 'complete check', class: "w-16 h-16 rounded-full bg-bdgt-green mb-2" %>
       <h4>Complete!</h4>
@@ -13,5 +13,5 @@
 <script>
   setTimeout(function() {
     document.querySelector('.popup').style.display = 'none';
-  }, 2000);
+  }, 500);
 </script>
